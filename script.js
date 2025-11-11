@@ -49,71 +49,76 @@ anche vostra se volete sentirvi parte del team! 😀)*/
 //l'obiettivo è stampare queste card
 
 //ho un array di oggetti e voglio selezionare ogni singolo membro e vedrli tutti in console
-const nameElem = document.querySelector("h5");
-const roleElem = document.querySelector("#role");
-const emailElem = document.querySelector("#email");
-const imgElem = document.querySelector("img");
-const form = document.querySelector("form")
+const nameInput = document.querySelector("h5");
+const roleInput = document.querySelector("#role");
+const emailInput = document.querySelector("#email");
 
+const form = document.querySelector(".form")
+
+const imgInput = document.querySelector("#addImage");
+
+//creo la funzione che mi stamp ala griglia
+function printGrid(){
 
 const teamContainer = document.querySelector("#team-container")
-const teamCard = document.querySelector(".card")
+//se voglio stamparli?
+//fun
+let cardString ="";
+for (let i = 0; i < teamMembers.length; i++) {
+  const curMember = teamMembers[i] //seleziono un oggetto
 
 
- //se voglio stamparli?
-//function creaCard (name, role, email, img){
- 
-for(let i =0; i<teamMembers.length; i++){
- const curMember = teamMembers[i] //seleziono un oggetto
+  //creo le variabili degli elementi dell'oggetto
+  //const name = curMember["name"];
+  //const role = curMember["role"];   //---> posso usare la destrutturazione 
+  //onst email = curMember["email"];
+  //const img = curMember["img"];
 
+  const { name, role, email, img } = curMember;
+  const card = `
+  
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="col-4">
+            <img src="${img}" class="img-fluid rounded-start" alt="${name}">
+          </div>
 
-//creo le variabili degli elementi dell'oggetto
-//const name = curMember["name"];
-//const role = curMember["role"];   //---> posso usare la destrutturazione 
-//onst email = curMember["email"];
-//const img = curMember["img"];
-
-const{name, role, email, img} = curMember;
-const card = `<div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="${img}" class="img-fluid rounded-start" alt="${name}">
-                </div>
-
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <p class="card-text" id="role">${role}</p>
-                        <p class="card-text"><small class="text-body-secondary" id="email">${email}</small></p>
-                    </div>
-                </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${name}</h5>
+              <p class="card-text" id="role">${role}</p>
+              <p class="card-text"><small class="text-body-secondary" id="email">${email}</small></p>
             </div>
-        </div>`
+          </div>
+      
+    </div>`
 
-        console.log(card)
-        teamContainer.innerHTML= teamContainer.innerHTML + card
+  cardString = cardString + card
+  
 
 }
-/*return  
-`<section class="container border mt-5">
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="... ${}" class="img-fluid rounded-start" alt="...">
-                </div>
+teamContainer.innerHTML = cardString;
+}
+printGrid();
 
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="card-text" id="role">Role</p>
-                        <p class="card-text"><small class="text-body-secondary" id="email">email</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>`
+//bottone aggiungi input
+form.addEventListener("submit", function (event){
+  event.preventDefault();
+  const newMember = {
+    name: nameInput.value,
+    role: roleInput.value,
+    email:emailInput.value,
+  
+  }
+  teamMembers.push(teamMembers)
+})
 
-}*/
-
-//return name;
-//}
+/*bottone aggiungi immagine
+imgInput.addEventListener("submit", function (event){
+  event.preventDefault();
+  const newImage = Image.files[0]: -------------->non l'ho capito
+    name: nameInput.value,
+    
+  
+  }
+  teamMembers.push(newMember)
+})*/
