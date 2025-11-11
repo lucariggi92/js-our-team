@@ -61,11 +61,11 @@ const teamCard = document.querySelector(".card")
 
 
  //se voglio stamparli?
-function creaCard (name, role, email, img){
+//function creaCard (name, role, email, img){
  
 for(let i =0; i<teamMembers.length; i++){
  const curMember = teamMembers[i] //seleziono un oggetto
-nameElem.innerHTML = curMember.name
+
 
 //creo le variabili degli elementi dell'oggetto
 //const name = curMember["name"];
@@ -77,18 +77,22 @@ const{name, role, email, img} = curMember;
 const card = `<div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
+                    <img src="${img}" class="img-fluid rounded-start" alt="${name}">
                 </div>
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="card-text" id="role">Role</p>
-                        <p class="card-text"><small class="text-body-secondary" id="email">email</small></p>
+                        <h5 class="card-title">${name}</h5>
+                        <p class="card-text" id="role">${role}</p>
+                        <p class="card-text"><small class="text-body-secondary" id="email">${email}</small></p>
                     </div>
                 </div>
             </div>
         </div>`
+
+        console.log(card)
+        teamContainer.innerHTML= teamContainer.innerHTML + card
+
 }
 /*return  
 `<section class="container border mt-5">
@@ -111,5 +115,5 @@ const card = `<div class="card mb-3" style="max-width: 540px;">
 
 }*/
 
-return name;
-}
+//return name;
+//}
