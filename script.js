@@ -49,13 +49,14 @@ anche vostra se volete sentirvi parte del team! 😀)*/
 //l'obiettivo è stampare queste card
 
 //ho un array di oggetti e voglio selezionare ogni singolo membro e vedrli tutti in console
-const nameInput = document.querySelector("h5");
+const nameInput = document.querySelector("#name");
 const roleInput = document.querySelector("#role");
 const emailInput = document.querySelector("#email");
 
 const form = document.querySelector(".form")
 
 const imgInput = document.querySelector("#addImage");
+
 
 //creo la funzione che mi stamp ala griglia
 function printGrid(){
@@ -101,6 +102,7 @@ teamContainer.innerHTML = cardString;
 printGrid();
 
 //bottone aggiungi input
+
 form.addEventListener("submit", function (event){
   event.preventDefault();
   const newMember = {
@@ -109,8 +111,15 @@ form.addEventListener("submit", function (event){
     email:emailInput.value,
   
   }
-  teamMembers.push(teamMembers)
+  teamMembers.push(newMember)
+printGrid();
+
+nameInput.value = "";
+roleInput.value = "";
+emailInput.value = "";
+
 })
+
 
 /*bottone aggiungi immagine
 imgInput.addEventListener("submit", function (event){
